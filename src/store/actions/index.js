@@ -1,4 +1,4 @@
-import {ADD_TODO} from './action-type/action-types';
+import {ADD_TODO, CHANGE_DISPLAY} from './action-type/action-types';
 import {TOGGLE_COMPLETE} from "./action-type/action-types";
 
 let actions = {
@@ -7,6 +7,9 @@ let actions = {
   },
   toggleComplete: function(payload) {
     return {type: TOGGLE_COMPLETE, payload};
+  },
+  changeDisplay: function(payload) {
+    return {type: CHANGE_DISPLAY, payload};
   }
 };
 

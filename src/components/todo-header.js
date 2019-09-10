@@ -12,12 +12,11 @@ class TodoHeader extends Component {
   render() {
     return (<div>
       <div>您有{this.getUnfinishedCount()}件事未完成</div>
+      <div>待办项<input /><button>添加</button></div>
     </div>);
   }
 }
 
-let ConnectedTodoHeader = connect((state) => ({
+export default connect((state) => ({
   ...state
 }))(TodoHeader);
-
-export default ConnectedTodoHeader;

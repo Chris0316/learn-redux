@@ -1,7 +1,8 @@
-import {ADD_TODO} from '../actions/action-type/action-types';
+import {ADD_TODO, CHANGE_DISPLAY, TOGGLE_COMPLETE} from '../actions/action-type/action-types';
 
 //定义默认状态
 let initState = {
+  display: 'all',
   todos: [
     {
       id: parseInt(Math.random() * 10000000),
@@ -27,6 +28,21 @@ function reducer(state = initState, action) {
         ...state.todos,
         action.payload
       ]
+    };
+  } else if (action.type === TOGGLE_COMPLETE) {
+    newState = {
+      //循环每一条待办，把要修改的记录更新
+      todos: state.todos.map(item => {
+        if (item.id === action.payload) {
+          item.isComplete = !item.isComplete;
+        }
+        return item;
+      })
+    };
+  } else if (action.type === CHANGE_DISPLAY) {
+    newState = {
+      display: action.payload,
+      todos: [...state.todos]
     };
   } else {
     newState = state;
